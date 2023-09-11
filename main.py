@@ -4,8 +4,8 @@ import pytz
 
 app = Flask(__name__)
 
-@app.route("/get_info", methods=["GET"])
-def get_info():
+@app.route("/api", methods=["GET"])
+def api():
     # Get query parameters
     slack_name = request.args.get('slack_name')
     track = request.args.get('track')
