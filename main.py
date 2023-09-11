@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 import pytz
 
 app = Flask(__name__)
@@ -15,7 +15,7 @@ def api():
         return jsonify({'error': 'All required parameters are not provided'}), 400
 
     # Get the current day of the week
-    current_day = datetime.now(pytz.utc).strftime('%A')
+    current_day = datetime.now(timezone.utc).strftime('%A')
 
     # Get the current UTC time with validation of +/-2 hours
     utc_time = datetime.now(pytz.utc)
@@ -32,7 +32,7 @@ def api():
     response = {
         'slack_name': slack_name,
         'current_day': current_day,
-        'utc_time': utc_time.strftime('%Y-%m-%d %H:%M:%S %Z'),
+        'utc_time': utc_time.strftime('%Y-%m-%dT%H:%M:%SZ'),
         'track': track,
         'github_file_url': github_file_url,
         'github_repo_url': github_repo_url,
