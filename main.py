@@ -18,8 +18,8 @@ def api():
     current_day = datetime.now(pytz.utc).strftime('%A')
 
     # Get the current UTC time with validation of +/-2 hours
-    current_time = datetime.now(pytz.utc)
-    utc_offset = current_time.utcoffset().total_seconds() / 3600
+    utc_time = datetime.now(pytz.utc)
+    utc_offset = utc_time.utcoffset().total_seconds() / 3600
     if abs(utc_offset) > 2:
         return jsonify({'error': 'Invalid UTC offset'}), 400
 
@@ -32,7 +32,7 @@ def api():
     response = {
         'slack_name': slack_name,
         'current_day': current_day,
-        'current_utc_time': current_time.strftime('%Y-%m-%d %H:%M:%S %Z'),
+        'utc_time': utc_time.strftime('%Y-%m-%d %H:%M:%S %Z'),
         'track': track,
         'github_file_url': github_file_url,
         'github_repo_url': github_repo_url,
