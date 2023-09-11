@@ -24,8 +24,8 @@ def get_info():
         return jsonify({'error': 'Invalid UTC offset'}), 400
 
     # Construct GitHub URLs
-    github_repo_url = 'https://github.com/Gbreigns/'
-    github_file_url = f'{github_repo_url}/'
+    github_repo_url = 'https://github.com/gbreigns/HngZuri-Task1'
+    github_file_url = f'{github_repo_url}/blob/main/main.py'
    
 
     # Prepare the response JSON
